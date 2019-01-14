@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="194.0" prefWidth="351.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="poliventas.MenuCompradorController">
+   <children>
+      <Button layoutX="187.0" layoutY="71.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="146.0" text="Busqueda Sencilla" />
+      <Button layoutX="31.0" layoutY="125.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="146.0" text="Articulos mas Buscados" />
+      <Button layoutX="31.0" layoutY="71.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="146.0" text="Compras Pendientes" />
+      <Button layoutX="187.0" layoutY="125.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="146.0" text="Cerrar Sesion" />
+      <Label layoutX="97.0" layoutY="23.0" text="Menu Comprador">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
