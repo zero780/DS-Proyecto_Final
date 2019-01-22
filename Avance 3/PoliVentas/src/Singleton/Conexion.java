@@ -1,16 +1,16 @@
+package Singleton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package labsystems;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,18 +80,19 @@ public class Conexion {
     }
     
     
-    public static ResultSet callProcedure(String nombreTabla){
+    public static ResultSet callProcedure(String cadena){
         connect();
         ResultSet resultado= null;
         try {
             Statement in = connection.createStatement();
-            resultado = in.executeQuery("CALL "+nombreTabla);
+            resultado = in.executeQuery("CALL "+cadena);
             System.out.println("si");
             
         } catch (SQLException ex) {
             System.out.println("EXCEPCION: " + ex.getMessage());
             
         }
+        
         return resultado;        
     }
     

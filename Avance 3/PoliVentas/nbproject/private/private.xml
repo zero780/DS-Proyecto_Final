@@ -3,17 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Disenio/PoliVentas/src/Pago_Strategy/PagoSaldoStrategy.java</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/articulos/NuevoArticulo.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/Pago_Strategy/PagoStrategy.java</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/Login.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/administrador/ModificarUsuario.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/administrador/AdministrarArticulos.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/comprador/ArticulosMasBuscados.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/administrador/MenuAdministrador.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/administrador/AdministrarUsuarios.fxml</file>
-            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Vistas/articulos/ModificarArticulo.fxml</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Controladores/LoginController.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Usuario.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Vendedor.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Login.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/administrador/MenuAdministrador.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/administrador/CrearUsuario.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/vendedor/MenuVendedor.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Comprador.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Controladores/VendedorController.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/articulos/VisualizarArticulo.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/comprador/BusquedaSencilla.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Controladores/UsuarioController.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/comprador/MenuComprador.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Controladores/CompradorController.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Venta.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Articulo.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Singleton/Conexion.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Controladores/ArticuloController.java</file>
         </group>
     </open-files>
 </project-private>

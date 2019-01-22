@@ -11,7 +11,7 @@ create table tbl_categoria(
 create table tbl_rol(
 	idRol int auto_increment primary key ,
     tipo varchar(15),
-    descripcion varchar(20)
+    descripcion varchar(50)
     );
 
 create table tbl_estadoVenta(
@@ -26,7 +26,7 @@ create table tbl_tipoPago(
     descripcion varchar(20)
     );
     
-create table tbl_usuario(
+create table tbl_persona(
 	cedula varchar(10) primary key,
     nombres varchar(20),
     apellidos varchar(20),
@@ -34,10 +34,16 @@ create table tbl_usuario(
     tieneWhatsapp boolean,
     email varchar(30),
     direccion varchar(30),
-    matricula varchar(10),
     rol int,
     foreign key (rol) references tbl_rol(idRol)
     );
+create table tbl_usuario(
+	usuario varchar(8),
+    contrasena varchar(10),
+    persona varchar(10),
+    foreign key (persona) references tbl_persona(cedula)
+    );    
+
     
 create table tbl_articulo(
 	idArticulo int auto_increment primary key,
@@ -50,7 +56,7 @@ create table tbl_articulo(
     descripcion varchar(50),
     fechaPublicacion date,
     foreign key (categoria) references tbl_categoria(idCategoria),
-    foreign key (vendedor) references tbl_usuario(cedula)
+    foreign key (vendedor) references tbl_persona(cedula)
     );
     
 create table tbl_venta(
@@ -60,8 +66,8 @@ create table tbl_venta(
     total float,
     vendedor varchar(10),
     comprador varchar(10),
-    foreign key (vendedor) references tbl_usuario(cedula),
-    foreign key (comprador) references tbl_usuario(cedula),
+    foreign key (vendedor) references tbl_persona(cedula),
+    foreign key (comprador) references tbl_persona(cedula),
     foreign key (estadoVenta) references tbl_estadoVenta(idEstadoVenta)
     );
     
@@ -79,9 +85,20 @@ create table tbl_articuloVenta(
     venta int,
     articulo int,
     cantidad int,
-    calificacionArticulo int,
-    calificacionVendedor int,
+    calificacionArticulo float,
+    calificacionVendedor float,
     foreign key (venta) references tbl_venta(idVenta),
     foreign key (articulo) references tbl_articulo(idArticulo)
 );
+
+INSERT INTO `db_poliventas`.`tbl_rol` (`tipo`, `descripcion`) VALUES ('admin', 'administrador de articulos y usuarios');
+INSERT INTO `db_poliventas`.`tbl_rol` (`tipo`, `descripcion`) VALUES ('vendedor', 'usa funciones de comprador');
+INSERT INTO `db_poliventas`.`tbl_rol` (`tipo`, `descripcion`) VALUES ('comprador', 'tiene ciertas restircciones');
+INSERT INTO `db_poliventas`.`tbl_persona` (`cedula`, `nombres`, `apellidos`, `telefono`, `tieneWhatsapp`, `email`, `direccion`, `rol`) VALUES ('0950467290', 'Eileen', 'Sanchez', '0987654321', '1', 'eileen_sanchez@hotmail.es', 'Cristobal Colon 131 y Salinas', '1');
+INSERT INTO `db_poliventas`.`tbl_persona` (`cedula`, `nombres`, `apellidos`, `telefono`, `tieneWhatsapp`, `email`, `direccion`, `rol`) VALUES ('0987654321', 'Belen', 'Sanchez', '0987654321', '0', 'eileen_sanchez@hotmail.es', 'Cristobal Colon 131 y Salinas', '2');
+INSERT INTO `db_poliventas`.`tbl_persona` (`cedula`, `nombres`, `apellidos`, `telefono`, `tieneWhatsapp`, `email`, `direccion`, `rol`) VALUES ('0999999999', 'Belencita', 'Sanchez', '0987654321', '1', 'eileen_sanchez@hotmail.es', 'Cristobal Colon 131 y Salinas', '3');
+INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('eibesanc','1234','0950467290');
+INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('eileen','4321','0987654321');
+INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('belen','2314','0999999999');
+
 
