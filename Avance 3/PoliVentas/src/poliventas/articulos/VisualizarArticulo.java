@@ -5,8 +5,11 @@
  */
 package poliventas.articulos;
 
+import Observer.Comprador;
+import Observer.Vendedor;
 import Modelos.Articulo;
-import Modelos.*;
+
+import poliventas.TipoPago;
 import poliventas.comprador.BusquedaSencilla;
 
 /**
@@ -14,22 +17,47 @@ import poliventas.comprador.BusquedaSencilla;
  * @author usuario
  */
 public class VisualizarArticulo extends javax.swing.JFrame {
-    Usuario usuario ;
     Articulo articulo ;
     Vendedor vendedor;
+    Comprador comprador;
+    Vendedor vendedorComprador;
+    String tipocomprador;
     /**
      * Creates new form VisualizarArticulo
      * @param vendedor
      * @param articulo
-     * @param usuario
+     * @param comprador
      */
-    public VisualizarArticulo(Vendedor vendedor, Articulo articulo, Usuario usuario ) {
+    public VisualizarArticulo(Vendedor vendedor, Articulo articulo, Comprador comprador) {
         initComponents();
-        this.usuario=usuario;
         this.articulo = articulo;
         this.vendedor = vendedor;
+        this.comprador = comprador;
+        this.categoria.setText(articulo.getCategoria());
+        this.nombre.setText(articulo.getNombre());
+        this.descripcion.setText(articulo.getDescripcion());
+        this.fecha.setText(articulo.getFechaPublicacion());
+        this.precio.setText(String.valueOf(articulo.getPrecio()));
+        this.tiempo.setText(articulo.getCategoria());
+        tipocomprador = "comprador";
         
     }
+    public VisualizarArticulo(Vendedor vendedor, Articulo articulo, Vendedor comprador) {
+        initComponents();
+        this.articulo = articulo;
+        this.vendedor = vendedor;
+        this.vendedorComprador = comprador;
+        this.categoria.setText(articulo.getCategoria());
+        this.nombre.setText(articulo.getNombre());
+        this.descripcion.setText(articulo.getDescripcion());
+        this.fecha.setText(articulo.getFechaPublicacion());
+        this.precio.setText(String.valueOf(articulo.getPrecio()));
+        this.tiempo.setText(articulo.getCategoria());
+        tipocomprador = "vendedor";
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +89,7 @@ public class VisualizarArticulo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(222, 244, 244));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("Detalles Articulos");
@@ -77,6 +105,13 @@ public class VisualizarArticulo extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cesta-de-la-compra-boton-agregar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBackground(new java.awt.Color(222, 244, 244));
 
         categoria.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         categoria.setText("categoria");
@@ -233,10 +268,26 @@ public class VisualizarArticulo extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        BusquedaSencilla ingreso = new BusquedaSencilla(Controladores.CompradorController.convertirComprador(usuario));
+        BusquedaSencilla ingreso = new BusquedaSencilla(comprador);
         ingreso.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (tipocomprador.equals("comprador")){
+            TipoPago tpago = new TipoPago(comprador);
+            tpago.setVisible(true);
+            this.dispose();
+        }
+        else{
+            TipoPago tpago = new TipoPago(vendedorComprador);
+            tpago.setVisible(true);
+            this.dispose();
+        }
+        
+                
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -66,6 +66,10 @@ create table tbl_venta(
     total float,
     vendedor varchar(10),
     comprador varchar(10),
+    articulo int,
+    calificacionArticulo float,
+    calificacionVendedor float,
+    foreign key (articulo) references tbl_articulo(idArticulo),
     foreign key (vendedor) references tbl_persona(cedula),
     foreign key (comprador) references tbl_persona(cedula),
     foreign key (estadoVenta) references tbl_estadoVenta(idEstadoVenta)
@@ -80,16 +84,7 @@ create table tbl_pago(
     foreign key (tipo) references tbl_tipopago(idTipoPago)
     );
     
-create table tbl_articuloVenta(
-	idArticuloVenta int auto_increment primary key,
-    venta int,
-    articulo int,
-    cantidad int,
-    calificacionArticulo float,
-    calificacionVendedor float,
-    foreign key (venta) references tbl_venta(idVenta),
-    foreign key (articulo) references tbl_articulo(idArticulo)
-);
+
 
 INSERT INTO `db_poliventas`.`tbl_rol` (`tipo`, `descripcion`) VALUES ('admin', 'administrador de articulos y usuarios');
 INSERT INTO `db_poliventas`.`tbl_rol` (`tipo`, `descripcion`) VALUES ('vendedor', 'usa funciones de comprador');
@@ -100,5 +95,6 @@ INSERT INTO `db_poliventas`.`tbl_persona` (`cedula`, `nombres`, `apellidos`, `te
 INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('eibesanc','1234','0950467290');
 INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('eileen','4321','0987654321');
 INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('belen','2314','0999999999');
-
+INSERT INTO `db_poliventas`.`tbl_categoria` (`idCategoria`, `nombre`, `descripcion`) VALUES ('1', 'accesorio', 'accesorio de belleza');
+INSERT INTO `db_poliventas`.`tbl_articulo` (`idArticulo`, `vendedor`, `nombre`, `categoria`, `precio`, `vecesBuscados`, `descripcion`, `fechaPublicacion`) VALUES ('1', '0999999999', 'gafas', '1', '5', '0', 'gafas de sol', '2019-01-26');
 

@@ -64,12 +64,12 @@ public class CrearUsuario extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 255));
         setResizable(false);
 
-        jPanel8.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel8.setBackground(new java.awt.Color(222, 244, 244));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/usuario.png"))); // NOI18N
         jLabel1.setToolTipText("");
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(222, 244, 244));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setText("Usuario:");
@@ -152,7 +152,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        jPanel9.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel9.setBackground(new java.awt.Color(222, 244, 244));
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel38.setText("Nombres:");

@@ -5,8 +5,9 @@
  */
 package poliventas.comprador;
 
+import Observer.Vendedor;
 import Modelos.Articulo;
-import Modelos.Comprador;
+import Observer.Comprador;
 import Modelos.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Singleton.Conexion.*;
 import poliventas.articulos.VisualizarArticulo;
 
 /**
@@ -22,6 +22,7 @@ import poliventas.articulos.VisualizarArticulo;
  * @author usuario
  */
 public final class BusquedaSencilla extends javax.swing.JFrame {
+    String tipoUsuario;
     Comprador comprador;
     Vendedor vendedor;
     Usuario usuario ;
@@ -35,6 +36,7 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
         this.comprador = comprador;
         jLabel4.setText(comprador.getNombres()+" "+comprador.getApellidos());
         jTable1.setVisible(false);
+        tipoUsuario = "comprador";
         
     }
     public BusquedaSencilla(Vendedor vendedor) {
@@ -42,15 +44,10 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
         this.vendedor = vendedor;
         jLabel1.setText(vendedor.getNombres()+" "+vendedor.getApellidos());
         jTable1.setVisible(false);
+        tipoUsuario = "vendedor";
         
     }
-    public BusquedaSencilla(Usuario usuario) {
-        initComponents();
-        this.usuario = usuario;
-        jLabel1.setText(usuario.getNombres()+" "+usuario.getApellidos());
-        jTable1.setVisible(false);
-        
-    }
+    
     public String[] getColumnasE(){
         String columna[] = new String [] {"id","Nombre","Descripcion","Precio"};
         return columna;
@@ -90,8 +87,12 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
                 if(busqueda.next()){
                     Vendedor vendedorProducto = Controladores.VendedorController.crearVendedor(busqueda);
                     Articulo articulo = Controladores.ArticuloController.crearArticulo(busqueda, vendedor);
-                    VisualizarArticulo va = new VisualizarArticulo(vendedorProducto, articulo,comprador);
+                    VisualizarArticulo va;
+                    if (tipoUsuario.equals("comprador"))
+                        va = new VisualizarArticulo(vendedorProducto, articulo,comprador);
+                    else va = new VisualizarArticulo(vendedorProducto, articulo,vendedor);
                     va.setVisible(true);
+                    
                     this.dispose();
                 }
 
@@ -129,7 +130,7 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(222, 244, 244));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("Busqueda Sencilla");

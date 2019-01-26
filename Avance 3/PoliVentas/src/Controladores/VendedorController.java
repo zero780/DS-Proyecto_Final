@@ -6,12 +6,11 @@
 package Controladores;
 
 import Modelos.Usuario;
-import Modelos.Vendedor;
+import Observer.Vendedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Singleton.Conexion.*;
 
 /**
  *

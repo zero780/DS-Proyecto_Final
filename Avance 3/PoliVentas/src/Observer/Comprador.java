@@ -5,19 +5,20 @@
  */
 package Observer;
 
+import Modelos.Usuario;
+
 /**
  *
- * @author Usuario
+ * @author usuario
  */
-public class Comprador {
+public class Comprador extends Usuario {
     
-    public void realizarPedido(){
-        
+    
+    public Comprador() {
     }
     
-    public void realizarPago(){
-        
-    }
+    
+    
+    
     
 }
-

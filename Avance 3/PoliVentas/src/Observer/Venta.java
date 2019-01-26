@@ -5,30 +5,55 @@
  */
 package Observer;
 
-import java.sql.Date;
-
 /**
  *
- * @author Usuario
+ * @author usuario
  */
 public class Venta {
+    protected boolean estadoVenta;
+    protected String fecha;
+    protected float total;
+    protected Vendedor vendedor ;
+    protected Comprador comprador;
+    protected Vendedor vendedorComprador;
+    protected String tipoPago;
 
-    private Comprador cliente;
-    private Vendedor vendedor;
-    private Date fecha;
-    private String estado;
-    private String lugarEntrega;
     
-    public void notificarVendedor(){
-        
-    }
-    
-    public Comprador getCliente() {
-        return cliente;
+    public Venta() {
     }
 
-    public void setCliente(Comprador cliente) {
-        this.cliente = cliente;
+    
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+    
+    public boolean isEstadoVenta() {
+        return estadoVenta;
+    }
+
+    public void setEstadoVenta(boolean estadoVenta) {
+        this.estadoVenta = estadoVenta;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 
     public Vendedor getVendedor() {
@@ -39,27 +64,22 @@ public class Venta {
         this.vendedor = vendedor;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Comprador getComprador() {
+        return comprador;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setComprador(Comprador comprador) {
+        this.comprador = comprador;
     }
 
-    public String getEstado() {
-        return estado;
+    public Vendedor getVendedorComprador() {
+        return vendedorComprador;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setVendedorComprador(Vendedor vendedorComprador) {
+        this.vendedorComprador = vendedorComprador;
     }
-
-    public String getLugarEntrega() {
-        return lugarEntrega;
-    }
-
-    public void setLugarEntrega(String lugarEntrega) {
-        this.lugarEntrega = lugarEntrega;
-    }
+    
+    
+    
 }

@@ -5,6 +5,8 @@
  */
 package Modelos;
 
+import Observer.Vendedor;
+
 /**
  *
  * @author usuario

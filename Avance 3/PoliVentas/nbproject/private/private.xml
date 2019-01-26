@@ -3,24 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Disenio/PoliVentas/src/Observer/Venta.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Controladores/LoginController.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Modelos/Usuario.java</file>
-            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Vendedor.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/borrador.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/Login.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/administrador/MenuAdministrador.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/administrador/CrearUsuario.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/vendedor/MenuVendedor.java</file>
-            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Comprador.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Controladores/VendedorController.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/articulos/VisualizarArticulo.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/comprador/BusquedaSencilla.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Controladores/UsuarioController.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/poliventas/comprador/MenuComprador.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Controladores/CompradorController.java</file>
-            <file>file:/D:/Disenio/PoliVentas/src/Modelos/Venta.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Observer/Vendedor.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Modelos/Articulo.java</file>
-            <file>file:/D:/Disenio/PoliVentas/src/Singleton/Conexion.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/Clalificar.java</file>
             <file>file:/D:/Disenio/PoliVentas/src/Controladores/ArticuloController.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/Observer/Comprador.java</file>
+            <file>file:/D:/Disenio/PoliVentas/src/poliventas/TipoPago.java</file>
         </group>
     </open-files>
 </project-private>

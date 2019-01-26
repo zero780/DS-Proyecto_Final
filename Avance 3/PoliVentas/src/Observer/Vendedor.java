@@ -5,37 +5,31 @@
  */
 package Observer;
 
+import Modelos.Usuario;
+
 /**
  *
- * @author Usuario
+ * @author usuario
  */
-public class Vendedor {
-    private String calificacion;
+public class Vendedor extends Usuario {
     
-    public void visualizarVentasPendientes(){
-        
+    private float calificacion ; 
+
+    public Vendedor(String nombres, String apellidos, String telefono, boolean tieneWhatsapp, String email, String direccion, String cedula, String matricula, String rol) {
+        super(nombres, apellidos, telefono, tieneWhatsapp, email, direccion, cedula, matricula, rol);
     }
-    
-    public void resumenVentas(){
-        
+
+    public Vendedor() {
     }
-    
-    public void visualizarMisArticulos(){
-        
-    }
-    
-    public void obtenerNotificacion(){
-        
-    }
-    
-    public String getCalificacion() {
+
+    public float getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(String calificacion) {
+    public void setCalificacion(float calificacion) {
         this.calificacion = calificacion;
     }
-
+    
     
     
 }

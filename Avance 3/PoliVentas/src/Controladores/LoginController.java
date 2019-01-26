@@ -9,9 +9,9 @@ import Singleton.Conexion;
 import poliventas.comprador.MenuComprador;
 import poliventas.vendedor.MenuVendedor;
 import poliventas.administrador.MenuAdministrador;
-import Modelos.Comprador;
+import Observer.Comprador;
 import Modelos.Usuario;
-import Modelos.Vendedor;
+import Observer.Vendedor;
 import java.sql.*;
 import javax.swing.JOptionPane;
 

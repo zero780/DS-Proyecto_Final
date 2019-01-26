@@ -6,7 +6,7 @@
 package Controladores;
 
 import Modelos.Articulo;
-import Modelos.Vendedor;
+import Observer.Vendedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**

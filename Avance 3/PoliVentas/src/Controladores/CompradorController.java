@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Observer.Comprador;
 import Modelos.*;
 
 /**

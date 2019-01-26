@@ -12,8 +12,8 @@ delimiter ;
 delimiter //
 create procedure calificacionVendedor(in ingresoCedula varchar(10))
 begin
-select avg(tbl_articuloventa.calificacionVendedor) as promedioCalificacion
-from tbl_persona, tbl_articuloventa,tbl_venta
+select avg(tbl_venta.calificacionVendedor) as promedioCalificacion
+from tbl_persona,tbl_venta
 where tbl_venta.vendedor= tbl_persona.cedula and  ingresoCedula = tbl_persona.cedula
 group by tbl_persona.cedula;
 end // 
