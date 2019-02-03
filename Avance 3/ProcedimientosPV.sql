@@ -36,5 +36,31 @@ from tbl_articulo, tbl_persona
 where tbl_articulo.vendedor = tbl_persona.cedula and idArticulo = ingreso ;  
 
 end // 
-delimiter ;
+delimiter //
 
+
+delimiter //
+create procedure registrarArticulo( in nombreProducto varchar(20), vendedor varchar(10), categoria int, precio float,tiempoEntrega varchar(5),descripcion varchar(50))
+begin 
+INSERT INTO db_poliventas.tbl_articulo (`vendedor`,`nombre`,`categoria`,`precio`,`tiempoEntrega`, `descripcion`) VALUES (vendedor,nombreProducto,categoria,precio,tiempoEntrega,descripcion);
+end // 
+delimiter //
+
+delimiter //
+create procedure obtenerVendedores()
+begin
+select cedula, concat(nombres," ", apellidos) as nombre
+from tbl_persona
+where tbl_persona.rol = 2;  
+
+end // 
+delimiter //
+
+delimiter //
+create procedure obtenerCategorias()
+begin
+select idCategoria, nombre
+from tbl_categoria;
+
+end // 
+delimiter //

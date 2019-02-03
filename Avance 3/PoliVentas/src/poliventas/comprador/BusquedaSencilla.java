@@ -25,7 +25,6 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
     String tipoUsuario;
     Comprador comprador;
     Vendedor vendedor;
-    Usuario usuario ;
     DefaultTableModel modelo = new DefaultTableModel(null, getColumnasE());
     /**
      * Creates new form BusquedaSencilla
@@ -95,7 +94,7 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
                     
                     this.dispose();
                 }
-
+ 
                 
             } catch (SQLException ex) {
                 Logger.getLogger(BusquedaSencilla.class.getName()).log(Level.SEVERE, null, ex);

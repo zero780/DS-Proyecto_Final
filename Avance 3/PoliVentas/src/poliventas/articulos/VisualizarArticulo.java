@@ -276,12 +276,12 @@ public class VisualizarArticulo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (tipocomprador.equals("comprador")){
-            TipoPago tpago = new TipoPago(comprador);
+            TipoPago tpago = new TipoPago(comprador,vendedor,articulo);
             tpago.setVisible(true);
             this.dispose();
         }
         else{
-            TipoPago tpago = new TipoPago(vendedorComprador);
+            TipoPago tpago = new TipoPago(vendedor,vendedorComprador,articulo);
             tpago.setVisible(true);
             this.dispose();
         }

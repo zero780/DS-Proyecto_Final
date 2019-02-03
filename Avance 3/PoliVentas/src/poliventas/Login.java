@@ -178,7 +178,11 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
-            Controladores.LoginController.comprobarUsuario(jTextField1.getText(), jPasswordField1.getPassword());
+            if (Controladores.LoginController.comprobarUsuario(jTextField1.getText(), jPasswordField1.getPassword()))
+                this.dispose();
+            
+            
+           
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }

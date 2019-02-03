@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class LoginController {
     
-    public static void comprobarUsuario(String usuarioIngreso, char[] contrasena) throws SQLException{
+    public static boolean comprobarUsuario(String usuarioIngreso, char[] contrasena) throws SQLException{
         
         String contra="";
             for (char o : contrasena){
@@ -41,28 +41,31 @@ public class LoginController {
                     MenuAdministrador menuAdmin = new MenuAdministrador(usuario);
                     menuAdmin.setVisible(true);
                     System.out.println("Entraste");
-                    break;
+                    return true;
                 case "vendedor":
                     Vendedor vendedor = Controladores.VendedorController.convertirVendedor(usuario);
                     vendedor.setCalificacion(Controladores.VendedorController.obtenerCalificacion(usuario));
                     MenuVendedor menuVendedor = new MenuVendedor(vendedor);
                     menuVendedor.setVisible(true);
                     System.out.println("Entraste");
-                    break;
+                    return true;
                 case "comprador":
                     Comprador comprador = Controladores.CompradorController.convertirComprador(usuario);
                     MenuComprador menuComprador = new MenuComprador(comprador);
                     menuComprador.setVisible(true);
                     System.out.println("Entraste");
-                    break;
+                    return true;
                 default:
                     JOptionPane.showMessageDialog(null, "Usuario invalido", "Mensaje del sistema",JOptionPane.ERROR_MESSAGE);
-                    break;
+                    return false;
             }
         }
-        else JOptionPane.showMessageDialog(null, "Usuario invalido", "Mensaje del sistema",JOptionPane.ERROR_MESSAGE);
-
-    }
-    
-    
+        else {
+            JOptionPane.showMessageDialog(null, "Usuario invalido", "Mensaje del sistema",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
 }
+}
+    
+    

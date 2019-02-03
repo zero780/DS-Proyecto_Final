@@ -21,7 +21,6 @@ public class ArticuloController {
         Articulo articulo = new Articulo();
         articulo.setCategoria(info.getString("categoria"));
         articulo.setDescripcion(info.getString("descripcion"));
-        articulo.setFechaPublicacion(info.getString("fechaPublicacion"));
         articulo.setNombre(info.getString("nombre"));
         articulo.setPrecio(Integer.parseInt(info.getString("precio")));
         articulo.setTiempoEntrega(info.getString("tiempoEntrega"));

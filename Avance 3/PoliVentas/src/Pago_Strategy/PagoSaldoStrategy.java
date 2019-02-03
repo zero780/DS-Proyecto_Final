@@ -13,7 +13,7 @@ public class PagoSaldoStrategy implements PagoStrategy{
     
     @Override
     public void pagar(){
-        
+        //descuento en la base de datos 
     }
     
     public void recargarSaldo(){

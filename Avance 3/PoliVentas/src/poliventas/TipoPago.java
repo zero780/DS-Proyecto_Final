@@ -5,6 +5,7 @@
  */
 package poliventas;
 
+import Modelos.Articulo;
 import Observer.*;
 import poliventas.comprador.MenuComprador;
 import poliventas.vendedor.MenuVendedor;
@@ -14,22 +15,30 @@ import poliventas.vendedor.MenuVendedor;
  * @author usuario
  */
 public class TipoPago extends javax.swing.JFrame {
-    Comprador comprador ;
+   Articulo articulo ;
     Vendedor vendedor;
-    String tipoUsuario ;
+    Comprador comprador;
+    Vendedor vendedorComprador;
+    String tipocomprador;
     /**
      * Creates new form TipoPago
      * @param comprador
+     * @param vendedor
+     * @param articulo
      */
-    public TipoPago(Comprador comprador ) {
+    public TipoPago(Comprador comprador , Vendedor vendedor, Articulo articulo) {
         initComponents();
         this.comprador= comprador;
-        this.tipoUsuario = "comprador";
+        this.vendedor = vendedor;
+        this.articulo = articulo;
+        this.tipocomprador = "comprador";
     }
-    public TipoPago(Vendedor vendedor ) {
+    public TipoPago(Vendedor vendedor,  Vendedor comprador, Articulo articulo) {
         initComponents();
         this.vendedor =vendedor;
-        this.tipoUsuario= "vendedor";
+        this.vendedorComprador = comprador;
+        this.articulo = articulo;
+        this.tipocomprador= "vendedor";
         
     }
 
@@ -64,6 +73,11 @@ public class TipoPago extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/metodo-de-pago (1).png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Por App de Pago");
@@ -126,18 +140,27 @@ public class TipoPago extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //registrar pago
-        if (tipoUsuario.equals("comprador")){
-            MenuComprador menu = new MenuComprador(comprador);
-            menu.setVisible(true);
+        calificar();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void calificar(){
+        if (tipocomprador.equals("comprador")){
+            Calificar calificar = new Calificar(comprador,vendedor,articulo);
+            calificar.setVisible(true);
             this.dispose();
         }
         else{
-            MenuVendedor menu = new MenuVendedor(vendedor);
-            menu.setVisible(true);
+            Calificar calificar = new Calificar(vendedor,vendedorComprador,articulo);
+            calificar.setVisible(true);
             this.dispose();
         }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        calificar();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
