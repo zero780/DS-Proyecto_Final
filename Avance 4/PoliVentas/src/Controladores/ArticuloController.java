@@ -7,6 +7,7 @@ package Controladores;
 
 import Modelos.Articulo;
 import Observer.Vendedor;
+import Singleton.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
@@ -26,7 +27,13 @@ public class ArticuloController {
         articulo.setTiempoEntrega(info.getString("tiempoEntrega"));
         articulo.setVendedor(vendedor);
 
-
+ 
         return articulo;
+    } 
+    
+    public static void aumentarBusqueda(ResultSet info) throws SQLException{
+        Conexion.callProcedure("aumentarBusqueda("+info.getString("idArticulo")+");");
     }
+    
+    
 }

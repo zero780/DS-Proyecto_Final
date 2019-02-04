@@ -26,7 +26,7 @@ public class VendedorController {
         ResultSet calificaciones = Singleton.Conexion.callProcedure("db_poliventas.calificacionVendedor('"+usuario.getCedula()+"');");
         try {
         while(calificaciones.next()){
-            calificacion = Integer.valueOf(calificaciones.getString("promedioCalificacion"));
+            calificacion = Float.parseFloat(calificaciones.getString("promedioCalificacion"));
          
         } 
         }catch (SQLException ex) {

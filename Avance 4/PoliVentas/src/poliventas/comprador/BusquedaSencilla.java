@@ -5,6 +5,7 @@
  */
 package poliventas.comprador;
 
+import Controladores.ArticuloController;
 import Observer.Vendedor;
 import Modelos.Articulo;
 import Observer.Comprador;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poliventas.articulos.VisualizarArticulo;
+import poliventas.vendedor.MenuVendedor;
 
 /**
  *
@@ -41,7 +43,7 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
     public BusquedaSencilla(Vendedor vendedor) {
         initComponents();
         this.vendedor = vendedor;
-        jLabel1.setText(vendedor.getNombres()+" "+vendedor.getApellidos());
+        jLabel4.setText(vendedor.getNombres()+" "+vendedor.getApellidos());
         jTable1.setVisible(false);
         tipoUsuario = "vendedor";
         
@@ -84,12 +86,15 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
             ResultSet busqueda = Singleton.Conexion.callProcedure("obtenerArticulo("+jTable1.getValueAt(filaseleccionada, 0)+");");
             try {
                 if(busqueda.next()){
+                    
+                    ArticuloController.aumentarBusqueda(busqueda);
                     Vendedor vendedorProducto = Controladores.VendedorController.crearVendedor(busqueda);
-                    Articulo articulo = Controladores.ArticuloController.crearArticulo(busqueda, vendedor);
+                    Articulo articulo = Controladores.ArticuloController.crearArticulo(busqueda, vendedorProducto);
                     VisualizarArticulo va;
                     if (tipoUsuario.equals("comprador"))
                         va = new VisualizarArticulo(vendedorProducto, articulo,comprador);
                     else va = new VisualizarArticulo(vendedorProducto, articulo,vendedor);
+                    
                     va.setVisible(true);
                     
                     this.dispose();
@@ -258,9 +263,16 @@ public final class BusquedaSencilla extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        MenuComprador ingreso = new MenuComprador(comprador);
-        ingreso.setVisible(true);
-        this.dispose();
+        if (tipoUsuario.equals("comprador")){
+            MenuComprador ingreso = new MenuComprador(comprador);
+            ingreso.setVisible(true);
+            this.dispose();
+        }
+        else{
+            MenuVendedor ingreso = new MenuVendedor(vendedor);
+            ingreso.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

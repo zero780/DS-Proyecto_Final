@@ -29,6 +29,36 @@ end //
 delimiter ;
 
 delimiter //
+create procedure listaArticulos(in nombreIngreso varchar(20), descripcionIngreso varchar(50))
+begin
+select idArticulo, concat(nombres," ",apellidos), nombre, precio
+from tbl_articulo , tbl_persona
+where tbl_articulo.vendedor= tbl_persona.cedula and tbl_articulo.nombre like concat('%',nombre,'%')  and  tbl_articulo.descripcion like concat('%',descripcionIngreso,'%')  ;
+end // 
+delimiter ;
+
+delimiter //
+create procedure masBuscados()
+begin
+select idArticulo, concat(nombres," ",apellidos), nombre, precio
+from tbl_articulo , tbl_persona
+where tbl_articulo.vendedor= tbl_persona.cedula 
+order by (vecesBuscados) DESC ;
+
+end // 
+delimiter ;
+
+delimiter //
+create procedure obtenerVendedor(in ingreso int)
+begin
+select *
+from tbl_persona
+where cedula = ingreso ;  
+
+end // 
+delimiter //
+
+delimiter //
 create procedure obtenerArticulo(in ingreso int)
 begin
 select *
@@ -36,7 +66,9 @@ from tbl_articulo, tbl_persona
 where tbl_articulo.vendedor = tbl_persona.cedula and idArticulo = ingreso ;  
 
 end // 
-delimiter //
+delimiter ;
+
+
 
 
 delimiter //
@@ -44,7 +76,7 @@ create procedure registrarArticulo( in nombreProducto varchar(20), vendedor varc
 begin 
 INSERT INTO db_poliventas.tbl_articulo (`vendedor`,`nombre`,`categoria`,`precio`,`tiempoEntrega`, `descripcion`) VALUES (vendedor,nombreProducto,categoria,precio,tiempoEntrega,descripcion);
 end // 
-delimiter //
+delimiter ;
 
 delimiter //
 create procedure obtenerVendedores()
@@ -54,7 +86,7 @@ from tbl_persona
 where tbl_persona.rol = 2;  
 
 end // 
-delimiter //
+delimiter ;
 
 delimiter //
 create procedure obtenerCategorias()
@@ -63,4 +95,34 @@ select idCategoria, nombre
 from tbl_categoria;
 
 end // 
+delimiter ;
+
 delimiter //
+create procedure aumentarBusqueda(in codigo int)
+begin
+update tbl_articulo
+set vecesBuscados= vecesBuscados + 1
+where idArticulo = codigo;
+
+end // 
+delimiter ;
+
+delimiter //
+create procedure comprasPendientes(in ingresoComprador int)
+begin
+select *
+from tbl_venta
+where comprador = ingresocomprador and estadoVenta=1;
+
+end // 
+delimiter ;
+
+delimiter //
+create procedure ventasPendientes(in ingresoVendedor int)
+begin
+select idVenta , tbl_articulo.nombre, fecha, total, tbl_estadoventa.estadoVenta
+from tbl_venta , tbl_articulo, tbl_estadoventa
+where vendedor = ingresoVendedor and estadoVenta=1;
+
+end // 
+delimiter ;

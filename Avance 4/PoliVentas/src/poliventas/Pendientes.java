@@ -7,41 +7,53 @@ package poliventas;
 
 import Observer.Comprador;
 import Observer.Vendedor;
+import Singleton.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
+import poliventas.comprador.MenuComprador;
+import poliventas.vendedor.MenuVendedor;
 
 /**
  *
  * @author usuario
  */
-public class Pendientes extends javax.swing.JFrame {
+public final class Pendientes extends javax.swing.JFrame {
     String tipoUsuario;
     Comprador comprador;
     Vendedor vendedor;
     String tipoConsulta;
+    ResultSet consulta ;
     
-    DefaultTableModel modelo;
+    DefaultTableModel modelo = new DefaultTableModel(null, getColumnas());
     /**
      * Creates new form Pendientes
      * @param comprador
      */
-    public Pendientes(Comprador comprador) {
+    public Pendientes(Comprador comprador) throws SQLException {
         initComponents();
         tipoConsulta="compras";
         tipoUsuario ="comprador";
         this.comprador = comprador;
-        modelo = new DefaultTableModel(null, getColumnasC());
+        jLabel4.setText(comprador.getNombres()+" "+comprador.getApellidos());
+        jLabel1.setText("Compras Pendientes");
+        setFilas();
+        
+        
+        
     }
-    public Pendientes(Vendedor vendedor, String tipo) {
+    public Pendientes(Vendedor vendedor, String tipo) throws SQLException {
         initComponents();
         tipoConsulta=tipo;
         tipoUsuario ="vendedor";
         this.vendedor = vendedor;
-        if (tipo.equals("ventas"))
-            modelo = new DefaultTableModel(null, getColumnasV());
+        jLabel4.setText(vendedor.getNombres()+" "+vendedor.getApellidos());
+        if (tipo.equals("compras"))
+            jLabel1.setText("Compras Pendientes");
         else
-            modelo = new DefaultTableModel(null, getColumnasC());
+            jLabel1.setText("Ventas Pendientes");
+        setFilas();
+        
     }
     
 
@@ -56,9 +68,11 @@ public class Pendientes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,9 +81,6 @@ public class Pendientes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Tipo de Pendiente");
 
-        jTable2.setModel(modelo);
-        jScrollPane2.setViewportView(jTable2);
-
         jButton3.setText("Detalles");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,34 +88,58 @@ public class Pendientes extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(modelo);
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/salida.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(67, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(jButton3)))
                 .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1)
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
                         .addComponent(jButton3)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,28 +159,51 @@ public class Pendientes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        if (tipoUsuario.equals("comprador")){
+            MenuComprador ingreso = new MenuComprador(comprador);
+            ingreso.setVisible(true);
+            this.dispose();
+        }
+        else{
+            MenuVendedor ingreso = new MenuVendedor(vendedor);
+            ingreso.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
     
-    public String[] getColumnasC(){
-        String columna[] = new String [] {"id","Compra","Fecha","Total","Estado"};
+    
+    public String[] getColumnas(){
+        String columna[] = new String [] {"id","Articulo","Fecha","Total","Estado"};
         return columna;
     }
-    public String[] getColumnasV(){
-        String columna[] = new String [] {"id","Venta","Fecha","Total","Estado"};
-        return columna;
-    }
+    
+    
+    
     public void setFilas() throws SQLException{
         limpiartabla();
         
-        ResultSet consulta;
-        if (tipoUsuario.equals("comprador"))
-            consulta= Singleton.Conexion.callProcedure("db_poliventas.compras('"+comprador.getCedula()+"');");
-        else{
-            if(tipoConsulta.equals("ventas"))
-                consulta= Singleton.Conexion.callProcedure("db_poliventas.ventas('"+vendedor.getCedula()+"');");
-            else
-                consulta= Singleton.Conexion.callProcedure("db_poliventas.compras('"+vendedor.getCedula()+"');");
+        if (tipoUsuario.equals("comprador")){
+            
+            consulta = Conexion.callProcedure("comprasPendientes('"+comprador.getCedula()+"');");
         }
-        Object datos [] = new Object[4];
+        else{
+            if (tipoConsulta.equals("ventas")){
+            
+                jLabel1.setText("Ventas Pendientes Pendientes");
+                consulta = Conexion.callProcedure("ventasPendientes('"+vendedor.getCedula()+"');");
+
+            }
+            else{
+            
+                jLabel1.setText("Compras Pendientes");
+                consulta = Conexion.callProcedure("comprasPendientes('"+vendedor.getCedula()+"');");
+            }   
+        }
+        
+        Object datos [] = new Object[5];
         while (consulta.next()){
             for(int i=0;i<5;i++){
                 datos[i]=consulta.getObject(i+1);                
@@ -165,9 +223,11 @@ public class Pendientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -111,4 +111,7 @@ INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) V
 INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('eileen','4321','0987654321');
 INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES ('belen','2314','0999999999');
 INSERT INTO `db_poliventas`.`tbl_categoria` (`idCategoria`, `nombre`, `descripcion`) VALUES ('1', 'accesorio', 'accesorio de belleza');
+INSERT INTO `db_poliventas`.`tbl_estadoventa` (`idEstadoVenta`, `estadoVenta`, `descripcion`) VALUES ('1', 'pendiente', 'aun no se entrega');
+INSERT INTO `db_poliventas`.`tbl_estadoventa` (`idEstadoVenta`, `estadoVenta`, `descripcion`) VALUES ('2', 'realizada', 'pagada');
+INSERT INTO `db_poliventas`.`tbl_venta` (`estadoVenta`, `vendedor`, `comprador`, `articulo`) VALUES ('1', '0987654321', '0999999999', '1');
 
