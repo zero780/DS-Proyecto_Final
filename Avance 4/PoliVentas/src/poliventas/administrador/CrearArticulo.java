@@ -10,6 +10,7 @@ import Singleton.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import poliventas.Login;
 import poliventas.vendedor.MisArticulos;
 
@@ -22,6 +23,7 @@ public class CrearArticulo extends javax.swing.JFrame {
     HashMap<String,String> categorias = new HashMap<>();
     /**
      * Creates new form CrearUsuario
+     * @param vendedor
      */
     //que ingrese el admin o el usuario vendedor 
     
@@ -79,6 +81,11 @@ public class CrearArticulo extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/guardar.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/entrar.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -296,6 +303,17 @@ public class CrearArticulo extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String categoria = categorias.get(jComboBox2.getSelectedItem().toString());
+        
+        
+        ResultSet articulo= Conexion.callProcedure("registrarArticulo('"+jTextField36.getText()+"','"+vendedor.getCedula()+"',"+categoria+","+jTextField39.getText()+",'"+jTextField40.getText()+"','"+jTextArea1.getText()+"');");
+        JOptionPane.showMessageDialog(null, "Articulo registrado", "Mensaje del sistema",JOptionPane.INFORMATION_MESSAGE);
+        jButton1.setEnabled(false);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

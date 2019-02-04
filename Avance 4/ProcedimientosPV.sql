@@ -126,3 +126,13 @@ where vendedor = ingresoVendedor and estadoVenta=1;
 
 end // 
 delimiter ;
+
+delimiter //
+create procedure ingresoUsuario(in ci varchar(10), nom varchar(20), ape varchar(20),  tlf varchar(10),  wa boolean, correo varchar(30), dir varchar(30), tipo int, usu varchar(8), pass varchar(10) )
+begin
+INSERT INTO `db_poliventas`.`tbl_persona` (`cedula`, `nombres`, `apellidos`, `telefono`, `tieneWhatsapp`, `email`, `direccion`, `rol`) VALUES (ci, nom, ape, tlf, wa, correo, dir, tipo);
+INSERT INTO `db_poliventas`.`tbl_usuario` (`usuario`, `contrasena`, `persona`) VALUES (usu,pass,ci);
+end//
+delimiter ;
+
+
